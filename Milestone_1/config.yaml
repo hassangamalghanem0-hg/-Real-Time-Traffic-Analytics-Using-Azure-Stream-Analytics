@@ -1,0 +1,48 @@
+frequency: 5
+
+streets:
+  - name: "Agricultural Rd - Menoufia NU (Cairo bound)"
+    speed_mean: 55
+    speed_std: 12
+  - name: "Agricultural Rd - Menoufia NU (Alexandria bound)"
+    speed_mean: 20
+    speed_std: 5
+  - name: "Overpass Ramp - Menoufia NU (bridge)"
+    speed_mean: 30
+    speed_std: 8
+
+rush_hours:
+  - start: "08:00"
+    end: "09:30"
+    multiplier: 4
+  - start: "13:00"
+    end: "14:00"
+    multiplier: 4
+  - start: "17:00"
+    end: "18:00"
+    multiplier: 4
+
+mqtt:
+  broker: "broker.hivemq.com"
+  port: 1883
+  topic: "traffic/data/menofia_national_university"
+
+output:
+  format: "csv"
+  file: "traffic.csv"
+
+weather:
+  update_interval: 600
+
+solar_energy:
+  min: 0.0
+  max: 1.0
+
+lighting_demand:
+  night: high
+  dusk: medium
+  day: low
+  weather_impact:
+    fog: high
+    rain: high
+    storm: high

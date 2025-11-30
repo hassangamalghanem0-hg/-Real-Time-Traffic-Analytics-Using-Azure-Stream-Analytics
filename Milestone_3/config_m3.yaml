@@ -1,0 +1,50 @@
+# =========================================================
+#   MILESTONE 3 CONFIG - SPARK STREAMING ALERTS
+# =========================================================
+
+# ---------------------------
+#   KAFKA SETTINGS (Used in M3)
+# ---------------------------
+kafka:
+  bootstrap_servers: "kafka:9092"
+  input_topic: "traffic_topic"
+  alert_topic: "traffic-alerts"
+
+# ---------------------------
+#   SPARK STREAMING SETTINGS (Milestone 3)
+# ---------------------------
+streaming:
+  window_duration: "1 minute"        # aggregation window size
+  slide_duration: "30 seconds"       # window slide frequency
+  vehicle_threshold_moderate: 60     # moderate alert threshold
+  vehicle_threshold_high: 90         # high alert threshold
+  checkpoint_dir: "./checkpoint/spark"
+
+# ---------------------------
+#   MQTT BRIDGE (Kafka → MQTT)
+# ---------------------------
+mqtt_bridge:
+  host: "broker.hivemq.com"
+  port: 1883
+  traffic_topic: "traffic/data/menofia_national_university"
+
+# ---------------------------
+#   LIGHTING CONTROL (IoT Integration)
+# ---------------------------
+lighting_control:
+  lighting_topic_prefix: "lighting"  # topic example: lighting/<street>/set
+
+# ---------------------------
+#   TELEGRAM NOTIFIER (Optional)
+# ---------------------------
+notifier:
+  enable_telegram: true                     # set true to enable Telegram alerts
+  telegram_bot_token: "8357678603:AAG7Q3jLfiknkDJhNUOlxJ0j5z1FrPIk__g"   # token will be read from environment variable
+  telegram_chat_id: "8461510162"            # your Telegram chat ID
+
+# ---------------------------
+#   OUTPUT PATHS
+# ---------------------------
+paths:
+  parquet_output: "./output/alerts_parquet"
+  alerts_log: "./logs/alerts.log"
