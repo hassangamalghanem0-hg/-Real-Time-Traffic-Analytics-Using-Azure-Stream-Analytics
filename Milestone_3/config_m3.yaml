@@ -23,7 +23,7 @@ streaming:
 # ---------------------------
 #   MQTT BRIDGE (Kafka → MQTT)
 # ---------------------------
-mqtt_bridge:
+mqtt:
   host: "broker.hivemq.com"
   port: 1883
   traffic_topic: "traffic/data/menofia_national_university"
